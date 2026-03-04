@@ -36,7 +36,7 @@ app = FastAPI()
 api_router = APIRouter(prefix="/api")
 
 # Security
-SECRET_KEY = os.environ.get("SECRET_KEY", "your-secret-key-change-in-production-2024-cineviax")
+SECRET_KEY = os.environ["SECRET_KEY"]
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 43200  # 30 days
 

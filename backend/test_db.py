@@ -12,7 +12,17 @@ load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
 MONGO_URL = os.environ.get('MONGO_URL')
 DB_NAME = os.environ.get('DB_NAME', 'cineviax')
 
-print('Using MONGO_URL:', MONGO_URL)
+def _mask_mongo_url(url: Optional[str]) -> str:
+    if not url:
+        return "<not-set>"
+    if "://" not in url:
+        return "<redacted>"
+    scheme, rest = url.split("://", 1)
+    if "@" in rest:
+        return f"{scheme}://***:***@{rest.split('@', 1)[1]}"
+    return f"{scheme}://<redacted>"
+
+print('Using MONGO_URL:', _mask_mongo_url(MONGO_URL))
 
 try:
     client: MongoClient[Any] = MongoClient(MONGO_URL, serverSelectionTimeoutMS=5000)
