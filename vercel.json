@@ -1,0 +1,9 @@
+{
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "env": {
+    "EXPO_PUBLIC_API_URL": "@api_url"
+  },
+  "envPrefix": "EXPO_PUBLIC_",
+  "regions": ["iad1"]
+}

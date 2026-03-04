@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: cineviax-backend
+    env: dockerfile
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port ${PORT:-8000}
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 8000
+      - key: MONGO_URL
+        fromDatabase:
+          name: mongodb
+          property: connectionString
+      - key: DB_NAME
+        value: cineviax
+      - key: SECRET_KEY
+        generateValue: true
+
+databases:
+  - name: mongodb
+    plan: free
+    region: oregon
+    version: latest

@@ -1,0 +1,11 @@
+name: Deploy Backend to Render
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment disabled
+        run: echo "Backend deployment workflow is manual-only and currently disabled."

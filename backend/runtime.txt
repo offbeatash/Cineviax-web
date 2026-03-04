@@ -1,0 +1,4 @@
+{
+  "build": "requirements.txt",
+  "Python version": "3.11"
+}

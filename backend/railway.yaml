@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: cineviax-api
+    repo: your-repo-url
+    dockerfile: true
+    plan: free
+    variables:
+      - key: PYTHON_VERSION
+        value: "3.11"
